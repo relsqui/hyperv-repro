@@ -1,0 +1,8 @@
+environment:
+  APPVEYOR_BUILD_WORKER_CLOUD: pro-lw
+
+install:
+  - npm i
+
+build_script:
+  - npm run screenshot

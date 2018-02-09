@@ -1,7 +1,7 @@
 environment:
   APPVEYOR_BUILD_WORKER_CLOUD: pro-lw
 
-init:
+install:
   - ps: >-
       Start-FileDownload https://www.nirsoft.net/utils/whosip.zip
 
@@ -11,8 +11,6 @@ init:
 
       .\whosip.exe $ip
 
-install:
-  - ps: >-
       $env:JAVA_HOME = "C:\Program Files (x86)\Java\jdk1.8.0"
 
       $env:PATH = "$env:JAVA_HOME\bin;C:\Program Files (x86)\Java\jre8\bin\client;$env:PATH"

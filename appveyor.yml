@@ -1,12 +1,26 @@
 environment:
   APPVEYOR_BUILD_WORKER_CLOUD: pro-lw
 
+init:
+  - ps: >-
+      Start-FileDownload https://www.nirsoft.net/utils/whosip.zip
+
+      7z e whosip.zip
+
+      $ip = (New-Object Net.WebClient).DownloadString('https://www.appveyor.com/tools/my-ip.aspx').Trim()
+
+      .\whosip.exe $ip
+
 install:
   - ps: >-
       $env:JAVA_HOME = "C:\Program Files (x86)\Java\jdk1.8.0"
+
       $env:PATH = "$env:JAVA_HOME\bin;C:\Program Files (x86)\Java\jre8\bin\client;$env:PATH"
+
       [Environment]::SetEnvironmentVariable("JAVA_HOME", $env:JAVA_HOME, [EnvironmentVariableTarget]::Machine)
+
       [Environment]::SetEnvironmentVariable("Path", $env:PATH, [EnvironmentVariableTarget]::Machine)
+
       npm i
 
 build_script:

@@ -19,7 +19,7 @@ install:
 
       [Environment]::SetEnvironmentVariable("Path", $env:PATH, [EnvironmentVariableTarget]::Machine)
 
-      npm i
+  - npm i
 
 build_script:
   - npm run screenshot
